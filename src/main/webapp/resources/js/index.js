@@ -214,6 +214,10 @@ function animateFeatureCard(card) {
 function animateCounter(statItem) {
     const counterElement = statItem.querySelector('h4');
     if (!counterElement) return;
+
+    // Ensure counter is visible when animation begins
+    counterElement.style.opacity = '1';
+    counterElement.style.transform = 'translateY(0)';
     
     const target = parseInt(counterElement.textContent.replace(/[^0-9]/g, ''));
     const increment = target / 30;

@@ -16,7 +16,7 @@
                     </div>
                     <h1 class="hero-title display-4 fw-bold mb-4">
                         <span class="text-white">건강한 밥상,</span><br>
-                        <span class="text-success">한살림과 함께</span>
+                        <span class="text-white">한살림과 함께</span>
                     </h1>
                     <p class="hero-subtitle lead mb-4 text-light">
                         비조합원도 쉽게 이용할 수 있는<br>
@@ -353,8 +353,7 @@
             <div class="col-lg-6">
                 <div class="about-image">
                     <div class="image-placeholder bg-light rounded-3 p-5 text-center">
-                        <i class="bi bi-image display-1 text-muted"></i>
-                        <p class="text-muted mt-3">한살림 농가 이미지</p>
+                        <img src="/images/hslim.jpg" alt="한살림 농가 이미지" class="img-fluid rounded-3">
                     </div>
                 </div>
             </div>
