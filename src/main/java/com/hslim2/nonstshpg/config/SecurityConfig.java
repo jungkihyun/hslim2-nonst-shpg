@@ -28,8 +28,8 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 
                 .authorizeHttpRequests(auth -> auth
-                        // 모든 요청 허용 (개발 단계)
-                        .requestMatchers("/cart/**").authenticated()
+                        // 인증이 필요한 경로 설정
+                        .requestMatchers("/cart/**", "/checkout", "/orders/**").authenticated()
                         .anyRequest().permitAll()
                 )
                 

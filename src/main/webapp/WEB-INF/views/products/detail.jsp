@@ -26,11 +26,14 @@
         <a href="<c:url value='/products' />" class="btn btn-outline-success">
           <i class="bi bi-arrow-left"></i> 목록으로
         </a>
-        <form action="<c:url value='/cart/add'/>" method="post" class="d-flex gap-2">
+        <form id="addToCartForm" action="<c:url value='/cart/add'/>" method="post" class="d-flex gap-2">
           <input type="hidden" name="productId" value="${product.id}">
           <input type="number" name="quantity" value="1" min="1" class="form-control" style="width:80px;">
           <button type="submit" class="btn btn-success">
             <i class="bi bi-cart-plus"></i> 장바구니
+          </button>
+          <button type="button" id="buyNowBtn" class="btn btn-warning">
+            <i class="bi bi-lightning-fill"></i> 바로구매
           </button>
         </form>
       </div>
@@ -45,3 +48,4 @@
     </div>
   </c:if>
 </div>
+<script src="/js/product-detail.js"></script>

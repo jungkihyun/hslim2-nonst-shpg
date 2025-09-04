@@ -54,6 +54,7 @@
 
       <div class="text-end mt-4">
         <h4>총 금액: <fmt:formatNumber value="${totalPrice}" pattern="#,###" />원</h4>
+        <a href="<c:url value='/checkout'/>" class="btn btn-primary mt-2">구매하기</a>
       </div>
     </c:when>
     <c:otherwise>

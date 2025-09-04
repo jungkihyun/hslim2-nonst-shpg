@@ -80,13 +80,13 @@
             <!-- Right menu -->
             <ul class="navbar-nav">
                 <c:choose>
-                    <c:when test="${not empty sessionScope.user}">
+                    <c:when test="${pageContext.request.userPrincipal != null}">
                         <!-- 로그인 상태 -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" 
                                data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-person-circle me-1"></i>
-                                ${sessionScope.user.name}님
+                                ${sessionScope.user != null ? sessionScope.user.name : pageContext.request.userPrincipal.name}님
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow">
                                 <li><a class="dropdown-item" href="<c:url value='/mypage' />">

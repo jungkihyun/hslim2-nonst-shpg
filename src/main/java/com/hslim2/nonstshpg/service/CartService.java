@@ -74,6 +74,12 @@ public class CartService {
         cartItemRepository.delete(cartItem);
     }
 
+    public void clearCart(User user) {
+        validateUser(user);
+        List<CartItem> cartItems = cartItemRepository.findByUser(user);
+        cartItemRepository.deleteAll(cartItems);
+    }
+
     public Integer getTotalPrice(User user) {
         List<CartItem> cartItems = getCartItems(user);
         return cartItems.stream()
