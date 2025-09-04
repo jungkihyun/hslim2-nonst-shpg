@@ -1,10 +1,12 @@
 package com.hslim2.nonstshpg.config;
 
 import com.hslim2.nonstshpg.entity.User;
+import com.hslim2.nonstshpg.service.CartService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -15,7 +17,10 @@ import java.io.IOException;
  * 로그인 성공 시 사용자 정보를 세션에 저장하는 핸들러
  */
 @Component
+@RequiredArgsConstructor
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+
+    private final CartService cartService;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -25,6 +30,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
+        session.setAttribute("cartCount", cartService.getCartItemCount(user));
 
         // 메인 페이지로 리다이렉트
         response.sendRedirect(request.getContextPath() + "/");

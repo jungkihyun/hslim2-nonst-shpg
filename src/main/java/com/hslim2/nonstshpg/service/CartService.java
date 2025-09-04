@@ -21,6 +21,10 @@ public class CartService {
     private final ProductRepository productRepository;
 
     public void addToCart(User user, Long productId, Integer quantity) {
+        if (quantity == null || quantity <= 0) {
+            throw new IllegalArgumentException("수량은 1개 이상이어야 합니다.");
+        }
+
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new IllegalArgumentException("상품을 찾을 수 없습니다."));
 
@@ -42,11 +46,11 @@ public class CartService {
         return cartItemRepository.findByUser(user);
     }
 
-    public void updateCartItemQuantity(Long cartItemId, Integer quantity) {
-        CartItem cartItem = cartItemRepository.findById(cartItemId)
+    public void updateCartItemQuantity(User user, Long cartItemId, Integer quantity) {
+        CartItem cartItem = cartItemRepository.findByIdAndUser(cartItemId, user)
                 .orElseThrow(() -> new IllegalArgumentException("장바구니 항목을 찾을 수 없습니다."));
-        
-        if (quantity <= 0) {
+
+        if (quantity == null || quantity <= 0) {
             cartItemRepository.delete(cartItem);
         } else {
             cartItem.setQuantity(quantity);
@@ -54,8 +58,10 @@ public class CartService {
         }
     }
 
-    public void removeFromCart(Long cartItemId) {
-        cartItemRepository.deleteById(cartItemId);
+    public void removeFromCart(User user, Long cartItemId) {
+        CartItem cartItem = cartItemRepository.findByIdAndUser(cartItemId, user)
+                .orElseThrow(() -> new IllegalArgumentException("장바구니 항목을 찾을 수 없습니다."));
+        cartItemRepository.delete(cartItem);
     }
 
     public Integer getTotalPrice(User user) {

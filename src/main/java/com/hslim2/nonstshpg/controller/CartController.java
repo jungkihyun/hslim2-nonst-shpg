@@ -3,6 +3,7 @@ package com.hslim2.nonstshpg.controller;
 import com.hslim2.nonstshpg.entity.CartItem;
 import com.hslim2.nonstshpg.entity.User;
 import com.hslim2.nonstshpg.service.CartService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -20,23 +21,31 @@ public class CartController {
     private final CartService cartService;
 
     @GetMapping
-    public String cartList(@AuthenticationPrincipal User user, Model model) {
+    public String cartList(@AuthenticationPrincipal User user, Model model, HttpSession session) {
         List<CartItem> cartItems = cartService.getCartItems(user);
         Integer totalPrice = cartService.getTotalPrice(user);
-        
+
+        session.setAttribute("cartCount", cartService.getCartItemCount(user));
+
+
         model.addAttribute("cartItems", cartItems);
         model.addAttribute("totalPrice", totalPrice);
-        
-        return "cart/list";
+
+        model.addAttribute("contentPage", "cart/list.jsp");
+        model.addAttribute("pageTitle", "장바구니");
+
+        return "layout/layout";
     }
 
     @PostMapping("/add")
     public String addToCart(@AuthenticationPrincipal User user,
                            @RequestParam Long productId,
                            @RequestParam Integer quantity,
-                           RedirectAttributes redirectAttributes) {
+                            RedirectAttributes redirectAttributes,
+                            HttpSession session) {
         try {
             cartService.addToCart(user, productId, quantity);
+            session.setAttribute("cartCount", cartService.getCartItemCount(user));
             redirectAttributes.addFlashAttribute("message", "장바구니에 상품이 추가되었습니다.");
         } catch (IllegalArgumentException e) {
             redirectAttributes.addFlashAttribute("error", e.getMessage());
@@ -46,11 +55,14 @@ public class CartController {
     }
 
     @PostMapping("/update/{cartItemId}")
-    public String updateCartItem(@PathVariable Long cartItemId,
+    public String updateCartItem(@AuthenticationPrincipal User user,
+                                 @PathVariable Long cartItemId,
                                 @RequestParam Integer quantity,
-                                RedirectAttributes redirectAttributes) {
+                                 RedirectAttributes redirectAttributes,
+                                 HttpSession session) {
         try {
-            cartService.updateCartItemQuantity(cartItemId, quantity);
+            cartService.updateCartItemQuantity(user, cartItemId, quantity);
+            session.setAttribute("cartCount", cartService.getCartItemCount(user));
             if (quantity <= 0) {
                 redirectAttributes.addFlashAttribute("message", "상품이 장바구니에서 삭제되었습니다.");
             } else {
@@ -64,10 +76,13 @@ public class CartController {
     }
 
     @PostMapping("/remove/{cartItemId}")
-    public String removeFromCart(@PathVariable Long cartItemId,
-                                RedirectAttributes redirectAttributes) {
+    public String removeFromCart(@AuthenticationPrincipal User user,
+                                 @PathVariable Long cartItemId,
+                                 RedirectAttributes redirectAttributes,
+                                 HttpSession session) {
         try {
-            cartService.removeFromCart(cartItemId);
+            cartService.removeFromCart(user, cartItemId);
+            session.setAttribute("cartCount", cartService.getCartItemCount(user));
             redirectAttributes.addFlashAttribute("message", "상품이 장바구니에서 삭제되었습니다.");
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", "삭제 중 오류가 발생했습니다.");

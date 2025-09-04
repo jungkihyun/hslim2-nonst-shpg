@@ -22,13 +22,17 @@
       <c:if test="${not empty product.description}">
         <p class="mb-4">${product.description}</p>
       </c:if>
-      <div class="d-flex gap-2">
+      <div class="d-flex gap-2 align-items-center">
         <a href="<c:url value='/products' />" class="btn btn-outline-success">
           <i class="bi bi-arrow-left"></i> 목록으로
         </a>
-        <button type="button" class="btn btn-success">
-          <i class="bi bi-cart-plus"></i> 장바구니
-        </button>
+        <form action="<c:url value='/cart/add'/>" method="post" class="d-flex gap-2">
+          <input type="hidden" name="productId" value="${product.id}">
+          <input type="number" name="quantity" value="1" min="1" class="form-control" style="width:80px;">
+          <button type="submit" class="btn btn-success">
+            <i class="bi bi-cart-plus"></i> 장바구니
+          </button>
+        </form>
       </div>
     </div>
   </div>

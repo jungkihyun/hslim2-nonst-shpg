@@ -70,10 +70,17 @@
                                 <p class="card-text fw-bold text-success mb-3">
                                     <fmt:formatNumber value="${product.price}" pattern="#,###" />원
                                 </p>
-                                <div class="mt-auto">
-                                    <a href="<c:url value='/products/${product.id}' />" class="btn btn-outline-success btn-sm w-100">
+                                <div class="mt-auto d-grid gap-2">
+                                    <a href="<c:url value='/products/${product.id}' />" class="btn btn-outline-success btn-sm">
                                         <i class="bi bi-eye"></i> 자세히 보기
                                     </a>
+                                    <form action="<c:url value='/cart/add'/>" method="post">
+                                        <input type="hidden" name="productId" value="${product.id}">
+                                        <input type="hidden" name="quantity" value="1">
+                                        <button type="submit" class="btn btn-success btn-sm">
+                                            <i class="bi bi-cart-plus"></i> 장바구니
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
