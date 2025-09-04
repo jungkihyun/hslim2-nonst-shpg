@@ -20,7 +20,14 @@ public class CartService {
     private final CartItemRepository cartItemRepository;
     private final ProductRepository productRepository;
 
+    private void validateUser(User user) {
+        if (user == null) {
+            throw new IllegalArgumentException("로그인이 필요합니다.");
+        }
+    }
+
     public void addToCart(User user, Long productId, Integer quantity) {
+        validateUser(user);
         if (quantity == null || quantity <= 0) {
             throw new IllegalArgumentException("수량은 1개 이상이어야 합니다.");
         }
@@ -43,10 +50,12 @@ public class CartService {
     }
 
     public List<CartItem> getCartItems(User user) {
+        validateUser(user);
         return cartItemRepository.findByUser(user);
     }
 
     public void updateCartItemQuantity(User user, Long cartItemId, Integer quantity) {
+        validateUser(user);
         CartItem cartItem = cartItemRepository.findByIdAndUser(cartItemId, user)
                 .orElseThrow(() -> new IllegalArgumentException("장바구니 항목을 찾을 수 없습니다."));
 
@@ -59,6 +68,7 @@ public class CartService {
     }
 
     public void removeFromCart(User user, Long cartItemId) {
+        validateUser(user);
         CartItem cartItem = cartItemRepository.findByIdAndUser(cartItemId, user)
                 .orElseThrow(() -> new IllegalArgumentException("장바구니 항목을 찾을 수 없습니다."));
         cartItemRepository.delete(cartItem);

@@ -29,6 +29,7 @@ public class SecurityConfig {
                 
                 .authorizeHttpRequests(auth -> auth
                         // 모든 요청 허용 (개발 단계)
+                        .requestMatchers("/cart/**").authenticated()
                         .anyRequest().permitAll()
                 )
                 

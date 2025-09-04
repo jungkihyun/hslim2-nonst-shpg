@@ -21,7 +21,13 @@ public class CartController {
     private final CartService cartService;
 
     @GetMapping
-    public String cartList(@AuthenticationPrincipal User user, Model model, HttpSession session) {
+    public String cartList(@AuthenticationPrincipal User user, Model model, HttpSession session,
+                           RedirectAttributes redirectAttributes) {
+        if (user == null) {
+            redirectAttributes.addFlashAttribute("error", "로그인이 필요합니다.");
+            return "redirect:/login";
+        }
+
         List<CartItem> cartItems = cartService.getCartItems(user);
         Integer totalPrice = cartService.getTotalPrice(user);
 
@@ -43,6 +49,11 @@ public class CartController {
                            @RequestParam Integer quantity,
                             RedirectAttributes redirectAttributes,
                             HttpSession session) {
+        if (user == null) {
+            redirectAttributes.addFlashAttribute("error", "로그인이 필요합니다.");
+            return "redirect:/login";
+        }
+
         try {
             cartService.addToCart(user, productId, quantity);
             session.setAttribute("cartCount", cartService.getCartItemCount(user));
@@ -60,6 +71,11 @@ public class CartController {
                                 @RequestParam Integer quantity,
                                  RedirectAttributes redirectAttributes,
                                  HttpSession session) {
+        if (user == null) {
+            redirectAttributes.addFlashAttribute("error", "로그인이 필요합니다.");
+            return "redirect:/login";
+        }
+
         try {
             cartService.updateCartItemQuantity(user, cartItemId, quantity);
             session.setAttribute("cartCount", cartService.getCartItemCount(user));
@@ -80,6 +96,11 @@ public class CartController {
                                  @PathVariable Long cartItemId,
                                  RedirectAttributes redirectAttributes,
                                  HttpSession session) {
+        if (user == null) {
+            redirectAttributes.addFlashAttribute("error", "로그인이 필요합니다.");
+            return "redirect:/login";
+        }
+
         try {
             cartService.removeFromCart(user, cartItemId);
             session.setAttribute("cartCount", cartService.getCartItemCount(user));
