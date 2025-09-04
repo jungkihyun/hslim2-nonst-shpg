@@ -3,7 +3,7 @@
     {
       "productCode": "130506001",
       "productName": "자연그대로 로즈마리 립밤",
-      "imagePath": "images/130506001",
+      "imagePath": "data/images/130506001",
       "description": "자연 로즈마리 추출물로 만든 천연 립밤으로 촉촉하고 부드러운 입술을 만들어줍니다. 인공 향료나 파라벤 등 유해성분 없이 안전하게 사용할 수 있습니다.",
       "categoryCode": "1303",
       "categoryName": "화장품/오가닉코튼",
@@ -16,7 +16,7 @@
     {
       "productCode": "600000289",
       "productName": "자연그대로 아토로션(150g)",
-      "imagePath": "images/600000289",
+      "imagePath": "data/images/600000289",
       "description": "안심하고 쓰는 겅강한 천연 아토 로션. 자연그대로 아토 로션은 세계적 권위의 COSMOS 인증 천연 화장품입니다.",
       "categoryCode": "1303",
       "categoryName": "화장품/오가닉코튼",
@@ -29,7 +29,7 @@
     {
       "productCode": "130219089",
       "productName": "이팥눈찜질팩/유기농순면",
-      "imagePath": "images/130219089",
+      "imagePath": "data/images/130219089",
       "description": "유기농 팥을 넣은 천연 눈찜질팩으로 눈의 피로를 해소하고 혈액순환을 도와줍니다. 유기농 순면 소재로 피부에 자극이 없습니다.",
       "categoryCode": "1302",
       "categoryName": "화장품/오가닉코튼",
@@ -42,7 +42,7 @@
     {
       "productCode": "060201008",
       "productName": "유정란(15알/국내산)",
-      "imagePath": "images/060201008",
+      "imagePath": "data/images/060201008",
       "description": "청초/풀김치를 먹은 건강한 닭이 낳은 참여인증 유정란입니다.",
       "categoryCode": "0603",
       "categoryName": "축산/축산가공",
@@ -55,7 +55,7 @@
     {
       "productCode": "060201028",
       "productName": "구운유정란(6알)",
-      "imagePath": "images/060201028",
+      "imagePath": "data/images/060201028",
       "description": "일체의 참가물과 물 없이 40시간 동안 구웠습니다. 무항생제와 풀을 먹여 키운 한살림 유정란만을 사용했습니다.",
       "categoryCode": "0603",
       "categoryName": "축산/축산가공",
@@ -68,7 +68,7 @@
     {
       "productCode": "060310017",
       "productName": "바로먹는닭가슴살(200g)",
-      "imagePath": "images/060310017",
+      "imagePath": "data/images/060310017",
       "description": "국내산 닭가슴살을 저염으로 조리하여 바로 드실 수 있도록 만든 건강한 간편식입니다. 단백질이 풍부하고 지방 함량이 낮아 다이어트와 근육 관리에 좋습니다.",
       "categoryCode": "0603",
       "categoryName": "축산/축산가공",
@@ -81,7 +81,7 @@
     {
       "productCode": "080101043",
       "productName": "하늘바다새우(60g)",
-      "imagePath": "images/080101043",
+      "imagePath": "data/images/080101043",
       "description": "국내 서해안에서 잡은 신선한 새우를 깨끗하게 손질하여 포장한 프리미엄 새우입니다. 칼슘과 단백질이 풍부하여 성장기 아이들에게 좋습니다.",
       "categoryCode": "0901",
       "categoryName": "간식/음료/유제품",
@@ -94,7 +94,7 @@
     {
       "productCode": "100201003",
       "productName": "두부(420g)",
-      "imagePath": "images/100201003",
+      "imagePath": "data/images/100201003",
       "description": "100% 국산콩으로 만든 한살림 두부. 유전자변형(GMO) 걱정 없는 국산 콩만을 사용합니다.",
       "categoryCode": "1004",
       "categoryName": "반찬/양념/가루",
@@ -107,7 +107,7 @@
     {
       "productCode": "100402001",
       "productName": "도토리묵(420g:1모)",
-      "imagePath": "images/100402001",
+      "imagePath": "data/images/100402001",
       "description": "국내산 도토리 100%로 만든 전통 도토리묵입니다. 쫄깃한 식감과 담백한 맛이 일품이며, 식이섬유가 풍부하여 건강에 좋습니다.",
       "categoryCode": "1004",
       "categoryName": "반찬/양념/가루",
@@ -120,7 +120,7 @@
     {
       "productCode": "070406004",
       "productName": "자른미역귀(100g)",
-      "imagePath": "images/070406004",
+      "imagePath": "data/images/070406004",
       "description": "영양이 풍부한 미역을 요리하기 쉽도록 자른 자른미역귀입니다. 미역의 씨앗이 나오는 포자엽인 만큼 식이섬유, 후코이단, 철분 엽산 등 영양소가 풍부합니다.",
       "categoryCode": "0704",
       "categoryName": "수산/수산가공",
@@ -133,7 +133,7 @@
     {
       "productCode": "050408001",
       "productName": "마/장마(400g)",
-      "imagePath": "images/050408001",
+      "imagePath": "data/images/050408001",
       "description": "연하고 고소한 무농약 장마입니다. 산마에 비해 수분이 많아 조직이 연하고 고소한 맛이 특징이며, 뮤신이라는 당단백질 성분이 다량 함유되어 있습니다.",
       "categoryCode": "0504",
       "categoryName": "채소/버섯",
@@ -146,7 +146,7 @@
     {
       "productCode": "080304008",
       "productName": "감자칼국수(600g)",
-      "imagePath": "images/080304008",
+      "imagePath": "data/images/080304008",
       "description": "우리밀에 국산 감자전분과 천일염을 더해 구수한 맛을 담았습니다. 쫄깃하고 탄력 있는 식감이 맛있는 칼국수면입니다.",
       "categoryCode": "0803",
       "categoryName": "식사대용/간편식",
@@ -159,7 +159,7 @@
     {
       "productCode": "050406005",
       "productName": "당근(500g)",
-      "imagePath": "images/050406005",
+      "imagePath": "data/images/050406005",
       "description": "땅속 기운 품은 건강한 주황빛 당근입니다.",
       "categoryCode": "0504",
       "categoryName": "채소/버섯",
@@ -172,7 +172,7 @@
     {
       "productCode": "050151001",
       "productName": "양배추(1kg이상)",
-      "imagePath": "images/050151001",
+      "imagePath": "data/images/050151001",
       "description": "친황경으로 키워 육질이 단단하고 속이 꽉찬 양배추입니다.",
       "categoryCode": "0504",
       "categoryName": "채소/버섯",
@@ -185,7 +185,7 @@
     {
       "productCode": "080101011",
       "productName": "두부과자(100g)",
-      "imagePath": "images/080101011",
+      "imagePath": "data/images/080101011",
       "description": "국산 콩 두부와 우리밀의 고소한 조화 한살림 두부과자입니다.",
       "categoryCode": "0901",
       "categoryName": "간식/음료/유제품",
@@ -198,7 +198,7 @@
     {
       "productCode": "080101203",
       "productName": "꾸러기짱(90g)",
-      "imagePath": "images/080101203",
+      "imagePath": "data/images/080101203",
       "description": "우리밀과 쌀조청으로 바삭바삭 달콤하게 만든 꾸러기짱입니다.",
       "categoryCode": "0901",
       "categoryName": "간식/음료/유제품",
@@ -211,7 +211,7 @@
     {
       "productCode": "080101208",
       "productName": "담백한우리밀크래커(74g/4봉)",
-      "imagePath": "images/080101208",
+      "imagePath": "data/images/080101208",
       "description": "우유, 버터의 진한 풍미를 살린 담백한 우리밀 크래커",
       "categoryCode": "0901",
       "categoryName": "간식/음료/유제품",
@@ -224,7 +224,7 @@
     {
       "productCode": "080101057",
       "productName": "우리밀유정란전병(150g)",
-      "imagePath": "images/080101057",
+      "imagePath": "data/images/080101057",
       "description": "우리밀, 유정란으로 만든 건강한 간식 우리밀 유정란전병",
       "categoryCode": "0901",
       "categoryName": "간식/음료/유제품",
@@ -237,7 +237,7 @@
     {
       "productCode": "300000456",
       "productName": "무가당플레인요구르트(범산/450g)",
-      "imagePath": "images/300000456",
+      "imagePath": "data/images/300000456",
       "description": "진한 유기농 원유에 무가당의 깔끔함을 더한 '무가당플레인요구르트'",
       "categoryCode": "0901",
       "categoryName": "간식/음료/유제품",
@@ -250,7 +250,7 @@
     {
       "productCode": "060401337",
       "productName": "목초우유(900ml)",
-      "imagePath": "images/060401337",
+      "imagePath": "data/images/060401337",
       "description": "목초만을 먹고 자란 젖소의 유기농 '목초우유'",
       "categoryCode": "0901",
       "categoryName": "간식/음료/유제품",

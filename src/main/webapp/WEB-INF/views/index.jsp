@@ -38,12 +38,13 @@
                         <div class="card border-0 shadow-lg">
                             <div class="card-body p-4">
                                 <div class="d-flex align-items-center mb-3">
-                                    <div class="rounded-circle bg-success p-2 me-3">
+                                    <div class="rounded-circle bg-success p-2 me-3" style="border-radius: 25% !important;">
                                         <i class="bi bi-check text-white"></i>
                                     </div>
                                     <div>
                                         <h6 class="mb-0">신선한 유기농 채소</h6>
-                                        <small class="text-muted">당일 배송 가능</small>
+                                        <small class="text-muted d-block">당일 배송 가능</small>
+                                        <small class="text-muted">비조합원도 간편 주문</small>
                                     </div>
                                 </div>
                                 <div class="progress" style="height: 6px;">
@@ -175,7 +176,7 @@
                     <div class="category-card h-100">
                         <div class="category-image">
                             <div class="category-icon bg-secondary bg-gradient">
-                                <i class="bi bi-grain text-white"></i>
+                                <i class="bi bi-feather text-white"></i>
                             </div>
                         </div>
                         <div class="category-content">
