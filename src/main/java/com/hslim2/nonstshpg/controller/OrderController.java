@@ -41,7 +41,9 @@ public class OrderController {
         model.addAttribute("items", items);
         model.addAttribute("totalPrice", totalPrice);
         model.addAttribute("user", user);
-        return "order/checkout";
+        model.addAttribute("contentPage", "order/checkout.jsp");
+        model.addAttribute("pageTitle", "주문/결제");
+        return "layout/layout";
     }
 
     @PostMapping("/checkout")
@@ -61,6 +63,8 @@ public class OrderController {
     @GetMapping("/orders")
     public String orders(@AuthenticationPrincipal User user, Model model) {
         model.addAttribute("orders", orderService.getOrders(user));
-        return "orders/list";
+        model.addAttribute("contentPage", "order/list.jsp");
+        model.addAttribute("pageTitle", "주문내역");
+        return "layout/layout";
     }
 }
