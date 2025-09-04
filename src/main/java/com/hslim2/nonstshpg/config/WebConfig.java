@@ -15,16 +15,14 @@ public class WebConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         // CSS, JS, 이미지 등 정적 리소스 경로 설정
         registry.addResourceHandler("/css/**")
-                .addResourceLocations("classpath:/static/css/", "/resources/css/");
+                .addResourceLocations("classpath:/static/css/", "/resources/static/css/");
                 
         registry.addResourceHandler("/js/**")
-                .addResourceLocations("classpath:/static/js/", "/resources/js/");
-                
+                .addResourceLocations("classpath:/static/js/", "/resources/static/js/");
+
         registry.addResourceHandler("/images/**")
-                .addResourceLocations("classpath:/static/images/", "/resources/images/");
-                
-        registry.addResourceHandler("/favicon.ico")
-                .addResourceLocations("classpath:/static/favicon.ico");
+                .addResourceLocations("classpath:/static/images/", "/resources/static/images/");
+
     }
 
     /**

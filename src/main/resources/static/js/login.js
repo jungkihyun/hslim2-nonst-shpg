@@ -53,17 +53,17 @@ function initLoginForm() {
  * 로그인 폼 유효성 검사
  */
 function validateLoginForm() {
-    const username = document.getElementById('username').value.trim();
+    const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value.trim();
     
     // 이메일 검사
-    if (!username) {
-        showFieldError('username', '이메일을 입력해주세요.');
+    if (!email) {
+        showFieldError('email', '이메일을 입력해주세요.');
         return false;
     }
-    
-    if (!isValidEmail(username)) {
-        showFieldError('username', '올바른 이메일 형식이 아닙니다.');
+
+    if (!isValidEmail(email)) {
+        showFieldError('email', '올바른 이메일 형식이 아닙니다.');
         return false;
     }
     

@@ -21,12 +21,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 
     <!-- 공통 CSS -->
-    <link href="<c:url value='/resources/css/common.css' />" rel="stylesheet">
-    
+    <link href="<c:url value='/css/common.css' />" rel="stylesheet">
+
     <!-- 페이지별 CSS -->
     <c:if test="${not empty pageJs}">
         <c:set var="pageCss" value="${fn:replace(pageJs, '.js', '.css')}" />
-        <link href="<c:url value='/resources/css/${pageCss}' />" rel="stylesheet">
+        <link href="<c:url value='/css/${pageCss}' />" rel="stylesheet">
     </c:if>
 </head>
 
@@ -64,11 +64,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <!-- 공통 JS -->
-    <script src="<c:url value='/resources/js/common.js' />"></script>
+    <script src="<c:url value='/js/common.js' />"></script>
     
     <!-- 페이지별 JS -->
     <c:if test="${not empty pageJs}">
-        <script src="<c:url value='/resources/js/${pageJs}' />"></script>
+        <script src="<c:url value='/js/${pageJs}' />"></script>
     </c:if>
 </body>
 </html>
