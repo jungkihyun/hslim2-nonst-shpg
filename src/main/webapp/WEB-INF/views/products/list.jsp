@@ -8,8 +8,8 @@
         <h2>${pageTitle}</h2>
         <span class="text-muted">
             <c:choose>
-                <c:when test="${not empty products}">
-                    ${products.size()}개 상품
+                <c:when test="${totalProducts > 0}">
+                    ${totalProducts}개 상품
                 </c:when>
                 <c:otherwise>
                     0개 상품
@@ -114,24 +114,76 @@
         </c:choose>
     </div>
 
-    <!-- 페이징 (추후 구현) -->
-    <c:if test="${not empty products and products.size() >= 12}">
+    <!-- 페이징 -->
+    <c:if test="${totalPages > 1}">
         <nav aria-label="상품 페이징" class="mt-5">
             <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <span class="page-link">이전</span>
+                <!-- 이전 페이지 -->
+                <li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
+                    <c:choose>
+                        <c:when test="${currentPage == 1}">
+                            <span class="page-link">이전</span>
+                        </c:when>
+                        <c:otherwise>
+                            <c:url var="prevUrl" value="/products">
+                                <c:param name="page" value="${currentPage - 1}"/>
+                                <c:param name="size" value="${size}"/>
+                                <c:if test="${not empty selectedCategory}">
+                                    <c:param name="category" value="${selectedCategory.name().toLowerCase()}"/>
+                                </c:if>
+                                <c:if test="${not empty keyword}">
+                                    <c:param name="keyword" value="${keyword}"/>
+                                </c:if>
+                            </c:url>
+                            <a class="page-link" href="${prevUrl}">이전</a>
+                        </c:otherwise>
+                    </c:choose>
                 </li>
-                <li class="page-item active">
-                    <span class="page-link">1</span>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">다음</a>
+
+                <!-- 페이지 번호 -->
+                <c:forEach var="i" begin="1" end="${totalPages}">
+                    <li class="page-item ${i == currentPage ? 'active' : ''}">
+                        <c:choose>
+                            <c:when test="${i == currentPage}">
+                                <span class="page-link">${i}</span>
+                            </c:when>
+                            <c:otherwise>
+                                <c:url var="pageUrl" value="/products">
+                                    <c:param name="page" value="${i}"/>
+                                    <c:param name="size" value="${size}"/>
+                                    <c:if test="${not empty selectedCategory}">
+                                        <c:param name="category" value="${selectedCategory.name().toLowerCase()}"/>
+                                    </c:if>
+                                    <c:if test="${not empty keyword}">
+                                        <c:param name="keyword" value="${keyword}"/>
+                                    </c:if>
+                                </c:url>
+                                <a class="page-link" href="${pageUrl}">${i}</a>
+                            </c:otherwise>
+                        </c:choose>
+                    </li>
+                </c:forEach>
+
+                <!-- 다음 페이지 -->
+                <li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
+                    <c:choose>
+                        <c:when test="${currentPage == totalPages}">
+                            <span class="page-link">다음</span>
+                        </c:when>
+                        <c:otherwise>
+                            <c:url var="nextUrl" value="/products">
+                                <c:param name="page" value="${currentPage + 1}"/>
+                                <c:param name="size" value="${size}"/>
+                                <c:if test="${not empty selectedCategory}">
+                                    <c:param name="category" value="${selectedCategory.name().toLowerCase()}"/>
+                                </c:if>
+                                <c:if test="${not empty keyword}">
+                                    <c:param name="keyword" value="${keyword}"/>
+                                </c:if>
+                            </c:url>
+                            <a class="page-link" href="${nextUrl}">다음</a>
+                        </c:otherwise>
+                    </c:choose>
                 </li>
             </ul>
         </nav>

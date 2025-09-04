@@ -6,6 +6,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.ResourcePatternResolver;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,9 +32,15 @@ public class ProductController {
     @GetMapping("/products")
     public String products(@RequestParam(required = false) String category,
                           @RequestParam(required = false) String keyword,
+                           @RequestParam(defaultValue = "1") int page,
+                           @RequestParam(defaultValue = "12") int size,
                           Model model) {
-        
-        List<Product> products;
+
+
+        if (page < 1) page = 1;
+        Pageable pageable = PageRequest.of(page - 1, size);
+
+        Page<Product> productPage;
         String pageTitle = "전체 상품";
 
         if (category != null && !category.isEmpty()) {
@@ -39,26 +48,30 @@ public class ProductController {
                 Product.Category categoryEnum = Product.Category.valueOf(category.toUpperCase());
                 
                 if (keyword != null && !keyword.trim().isEmpty()) {
-                    products = productService.searchProductsByCategoryAndName(categoryEnum, keyword);
+                    productPage = productService.searchProductsByCategoryAndName(categoryEnum, keyword, pageable);
                     pageTitle = categoryEnum.getDisplayName() + " - " + keyword + " 검색 결과";
                 } else {
-                    products = productService.getProductsByCategory(categoryEnum);
+                    productPage = productService.getProductsByCategory(categoryEnum, pageable);
                     pageTitle = categoryEnum.getDisplayName();
                 }
                 
                 model.addAttribute("selectedCategory", categoryEnum);
             } catch (IllegalArgumentException e) {
-                products = productService.getAllProducts();
+                productPage = productService.getAllProducts(pageable);
                 pageTitle = "전체 상품";
             }
         } else if (keyword != null && !keyword.trim().isEmpty()) {
-            products = productService.searchProducts(keyword);
+            productPage = productService.searchProducts(keyword, pageable);
             pageTitle = keyword + " 검색 결과";
         } else {
-            products = productService.getAllProducts();
+            productPage = productService.getAllProducts(pageable);
         }
 
-        model.addAttribute("products", products);
+        model.addAttribute("products", productPage.getContent());
+        model.addAttribute("totalProducts", productPage.getTotalElements());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", productPage.getTotalPages());
+        model.addAttribute("size", size);
         model.addAttribute("pageTitle", pageTitle);
         model.addAttribute("categories", Product.Category.values());
         model.addAttribute("keyword", keyword);
